@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const path = require('path');
 require('dotenv').config()
 
+const helmet = require('helmet');
+
 const sauceRoutes = require('./routes/sauce');
 const userRoutes = require('./routes/user');
 
@@ -26,6 +28,8 @@ app.use((req, res, next) => {
 
 //tranforme le corp de la requete en objet JS utilisable
 app.use(bodyParser.json());
+
+app.use(helmet());
 
 // Enregistrement des routeurs
 app.use('/images', express.static(path.join(__dirname, 'images')));
