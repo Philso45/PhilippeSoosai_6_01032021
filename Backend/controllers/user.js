@@ -30,6 +30,9 @@ exports.signup = (req, res, next) => {
 exports.login = (req, res, next) => {
     // Masquage de l'adresse mail
     let buff = new Buffer(req.body.email);
+    if (req.body.email == undefined) {
+        res.status(400).json({errors: {message:"body is note defined"}})
+    }
     let emailInbase64 = buff.toString('base64');
 
     // Recherche d'un utilisateur dans la base de données
