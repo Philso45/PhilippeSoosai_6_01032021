@@ -28,7 +28,7 @@ exports.createSauce = (req, res, next) => {
     // Création de l'URL de l'image : http://localhost:3000/image/nomdufichier 
     imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
   });
-  // Enregistrement ddu modèle sauce dans la base de données
+  // Enregistrement du modèle sauce dans la base de données
   sauce.save()
     .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
     .catch(error => res.status(400).json({ error }));
